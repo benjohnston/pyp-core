@@ -331,7 +331,7 @@ body.drawer-visible {
 }
 @media (max-width: 720px) {
   .main-content {
-    padding-top: 60px;
+    padding-top: 0;
   }
 }
 .showing-drawer .main-content {
@@ -1082,12 +1082,18 @@ iframe {
   -webkit-font-smoothing: antialiased;
 }
 
-
+/*
 @media screen and (min-width: 768px) {
   .rwd-break {
     display: none;
+}*/
+.rwd-break {
+  display: block;
 }
 
+#your {
+  display: block;
+}
 
 @media (max-width: 720px) {
   .branding h1 {
