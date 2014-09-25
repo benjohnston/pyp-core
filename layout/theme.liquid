@@ -2,7 +2,7 @@
 <!--[if lt IE 7]> <html class="no-touch no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]> <html class="no-touch no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]> <html class="no-touch no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if IE 9]> <html class="ie9 no-touch no-js"> <![endif]-->
+<!--[if lt IE 9]> <html class="ie9 no-touch no-js"> {{ 'rem.min.js' | asset_url | script_tag }}<![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!-->
 <html class="no-touch no-js">
 <!--<![endif]-->
@@ -70,7 +70,7 @@
             empty.{% endcomment %} {% if child_list_handle == '' %} {% for i in (0..8) %} {% unless has_drop_down %} {% if forloop.first %} {% assign temp = 'link-list' %} {% else %} {% capture temp %}link-list-{{ i }}{% endcapture %} {% endif %} {% if
             linklists[temp] and linklists[temp].links.size > 0 and linklists[temp].title == link.title %} {% assign has_drop_down = true %} {% assign child_list_handle = temp %} {% endif %} {% endunless %} {% endfor %} {% else %} {% if linklists[child_list_handle]
             and linklists[child_list_handle].links.size > 0 %} {% assign has_drop_down = true %} {% endif %} {% endif %}
-            <li class="primary-nav{% if forloop.first %} first{% endif %}{% if link.active %} active{% endif %}{% if has_drop_down %} has-dropdown{% endif %}">
+            <li class="primary-nav{% if forloop.first %} first strong{% endif %}{% if link.active %} active{% endif %}{% if has_drop_down %} has-dropdown{% endif %}">
               <a href="{{ link.url }}">{{ link.title }}{% if has_drop_down %} <span class="icon icon-arrow-down" aria-hidden="true"></span>{% endif %}</a>
               {% if has_drop_down %}
               <ul class="sub-nav">

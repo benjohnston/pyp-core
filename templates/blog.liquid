@@ -1,5 +1,5 @@
 {% paginate blog.articles by settings.blog_app %}
-<div class="clearfix page-container">
+<div class="main-content blog">
 
     {% if current_tags %}
       <h1>{{ blog.title | link_to: blog.url }} / {{ current_tags.first }}</h1>
