@@ -1062,25 +1062,54 @@ iframe {
 .no-touch .template-index .full-bleed-slideshow.sticky-header {
   border: none;
 }
+
+
+
 .branding {
+  float: left;
+}
+@media (max-width: 720px) {
+  .branding {
+    float: none;
+  }
+}
+.branding h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 120px;
+  margin: 0;
+  -webkit-font-smoothing: initial;
+  -webkit-font-smoothing: antialiased;
+
+}
+@media (max-width: 720px) {
+  .branding h1 {
+    line-height: 1.2;
+  }
+}
+.branding a {
+  color: #2e3438;
+}
+
+/*.branding {
   float: none;
   text-align: center;
-}
+}*/
 /*@media (max-width: 720px) {
   .branding {
     float: none;
   }
 }*/
-.branding {
+/*.branding {
   font-weight: 400;
   max-width: 1020px;
-  /*width: 80%;*/
   text-align: center;
   margin: 0 auto;
   padding-top: 2em;
   -webkit-font-smoothing: initial;
   -webkit-font-smoothing: antialiased;
-}
+}*/
 
 /*
 @media screen and (min-width: 768px) {

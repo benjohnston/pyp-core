@@ -21,7 +21,7 @@
   <meta name="description" content="{{ page_description }}">{% endif %}
 
   <link rel="canonical" href="{{ canonical_url }}">
-  <meta name="viewport" content="width=device-width,initial-scale=1">{% include 'snippet-open-graph-tags' %} {% include 'twitter-cards' %} {{ 'style.scss.css' | asset_url | stylesheet_tag }} {{ 'theme.css' | asset_url | stylesheet_tag }} {{ content_for_header }} {% include 'oldIE-js' %}
+  <meta name="viewport" content="width=device-width,initial-scale=1">{% include 'snippet-open-graph-tags' %} {% include 'twitter-cards' %} {{ 'style.scss.css' | asset_url | stylesheet_tag }} {{ 'theme.css' | asset_url | stylesheet_tag }}{{'nav.scss.css' | asset_url | stylesheet_tag }} {{ content_for_header }} {% include 'oldIE-js' %}
 
 
   <script src="//use.typekit.net/bhn8kxd.js"></script>
@@ -60,13 +60,37 @@
 
   <div class="wrapper">
 
-    <header class="site-header">
+    <header class="main-header">
       <div class="branding">
 
 
         <div class="mast">
           <h1 itemprop="name" class="headline">Picture <span id="your">Your</span> Prosperity</h1>
+          {{!-- <h2 class="headline">Smart Money Moves to Turn Your Vision into Reality</h2> --}}
         </div>
+      </div>
+      <div class="grid-item {% if logo_center %} col-12{% else %}col-7 medium-down--col-12{% endif %}">
+        <nav id="navWrap" role="navigation">
+          <ul id="nav">
+            {% for link in linklists.main-menu.links %} {% assign has_drop_down = false %} {% assign child_list_handle = link.title | handle %} {% comment %}If the link uses the arabic, hebrew or cyrillic alphabet, or is in Chinese or Japanese, the handle will be
+            empty.{% endcomment %} {% if child_list_handle == '' %} {% for i in (0..8) %} {% unless has_drop_down %} {% if forloop.first %} {% assign temp = 'link-list' %} {% else %} {% capture temp %}link-list-{{ i }}{% endcapture %} {% endif %} {% if
+            linklists[temp] and linklists[temp].links.size > 0 and linklists[temp].title == link.title %} {% assign has_drop_down = true %} {% assign child_list_handle = temp %} {% endif %} {% endunless %} {% endfor %} {% else %} {% if linklists[child_list_handle]
+            and linklists[child_list_handle].links.size > 0 %} {% assign has_drop_down = true %} {% endif %} {% endif %}
+            <li class="nav-item{% if forloop.first %} first{% endif %}{% if link.active %} active{% endif %}{% if has_drop_down %} has-dropdown{% endif %}">
+              <a class="nav-item-link" href="{{ link.url }}">{{ link.title }}{% if has_drop_down %} <span class="icon icon-arrow-down" aria-hidden="true"></span>{% endif %}</a>
+              {% if has_drop_down %}
+              <ul class="sub-nav">
+                {% for l in linklists[child_list_handle].links %}
+                <li class="sub-nav-item{% if forloop.first %} first{% elsif forloop.last %} last{% endif %}">
+                  <a class="sub-nav-item-link {% if forloop.first %}first{% endif %} {% if forloop.last %}last{% endif %}" href="{{ l.url }}">{{ l.title }}</a>
+                </li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+        </nav>
       </div>
       <div class="header-tools">
 
@@ -81,7 +105,7 @@
           {% endif %} {% if settings.show_multiple_currencies %} {% include 'snippet-currency-picker' %} {% endif %} {% endcomment %}
 
 
-            <a class="cart-link" href="/cart">{{ cart.item_count}}<span class="cart-count">&#57346;</span></a>
+            <a class="cart-link" href="/cart">&#57346;<span class="cart-count">{{ cart.item_count}}</span></a>
           </p>
           <span class="drawer-toggle"></span>
         </div>
@@ -111,7 +135,7 @@
 
     <div class="header-drawer">
       <h1><a href="/">Prosperity</a></h1>
-      <span class="drawer-toggle icon"></span>
+      <span class="drawer-toggle"> </span>
       <nav class="navigation">
         <ul>
           <li class="first  ">
@@ -141,29 +165,7 @@
       %} {% endif %} {% else %} {{ content_for_layout }} {% endif %}
     </main>
 
-    <div class="grid-item {% if logo_center %} col-12{% else %}col-7 medium-down--col-12{% endif %}">
-      <nav id="navWrap" role="navigation">
-        <ul id="nav">
-          {% for link in linklists.main-menu.links %} {% assign has_drop_down = false %} {% assign child_list_handle = link.title | handle %} {% comment %}If the link uses the arabic, hebrew or cyrillic alphabet, or is in Chinese or Japanese, the handle will be
-          empty.{% endcomment %} {% if child_list_handle == '' %} {% for i in (0..8) %} {% unless has_drop_down %} {% if forloop.first %} {% assign temp = 'link-list' %} {% else %} {% capture temp %}link-list-{{ i }}{% endcapture %} {% endif %} {% if
-          linklists[temp] and linklists[temp].links.size > 0 and linklists[temp].title == link.title %} {% assign has_drop_down = true %} {% assign child_list_handle = temp %} {% endif %} {% endunless %} {% endfor %} {% else %} {% if linklists[child_list_handle]
-          and linklists[child_list_handle].links.size > 0 %} {% assign has_drop_down = true %} {% endif %} {% endif %}
-          <li class="nav-item{% if forloop.first %} first{% endif %}{% if link.active %} active{% endif %}{% if has_drop_down %} has-dropdown{% endif %}">
-            <a class="nav-item-link" href="{{ link.url }}">{{ link.title }}{% if has_drop_down %} <span class="icon icon-arrow-down" aria-hidden="true"></span>{% endif %}</a>
-            {% if has_drop_down %}
-            <ul class="sub-nav">
-              {% for l in linklists[child_list_handle].links %}
-              <li class="sub-nav-item{% if forloop.first %} first{% elsif forloop.last %} last{% endif %}">
-                <a class="sub-nav-item-link {% if forloop.first %}first{% endif %} {% if forloop.last %}last{% endif %}" href="{{ l.url }}">{{ l.title }}</a>
-              </li>
-              {% endfor %}
-            </ul>
-            {% endif %}
-          </li>
-          {% endfor %}
-        </ul>
-      </nav>
-    </div>
+
     <!-- #content -->
     <div class="mailing-list-signup ">
 

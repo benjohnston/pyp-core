@@ -95,18 +95,10 @@
 
   <div class="text-center">
     <h2>It appears that your cart is currently empty!</h2>
-    <h5>You can <a href="/collections/all">continue browsing here</a>.</h5>
+    <p>Double-check your quantity and try again. <a href="/products/picture-your-prosperity-pre-order">Pre-order Picture Your Prosperity</a>.</p>
   </div>
 
-  {% unless settings.extra_featured_products == blank or collections[settings.extra_featured_products].empty? %}
-  <div class="featured-collection">
-    <div id="coll-product-list" class="grid-uniform product-list">
-      {% for product in collections[settings.extra_featured_products].products %}
-        {% include 'snippet-product-item' %}
-      {% endfor %}
-    </div>
-  </div>
-  {% endunless %}
+
 
   {% endif %} <!-- if cart.item_count > 0  -->
 
@@ -116,7 +108,5 @@
 
 {% include 'snippet-shipping-rates-calculator' %}
 
-<div id="breadcrumbs" class="accent-text">
-  <span><a id="continue-shopping" href="/collections/{{ continue_shopping_handle }}">&larr; Continue Shopping</a></span>
-</div>
+
 {% endunless %}
