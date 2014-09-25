@@ -536,11 +536,11 @@ a {
 
 .wrapper {
   @include box-sizing();
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0px auto;
+  min-height: 500px;
   position: relative;
-  padding: 0 $gutter;
-  height: auto;
+/*   padding: 0 $gutter; */
   overflow: visible;
   {% if settings.page_bg_transparent %}
     background: transparent;
