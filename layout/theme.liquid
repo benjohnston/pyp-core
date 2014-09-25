@@ -70,25 +70,21 @@
       </div>
       <div class="header-tools">
 
-        {% if shop.customer_accounts_enabled %}
-        <p class="large--left medium-down--hide">
-          {% if customer %} Logged in as <a href="/account">{{ customer.first_name }}</a> · {{ "Logout" | customer_logout_link }} {% else %} {{ 'Log in' | customer_login_link }}{% if shop.customer_accounts_optional %} or {{ 'Create an account' | customer_register_link
-          }}{% endif %} {% endif %}
-        </p>
-        {% endif %} {% if settings.show_multiple_currencies %} {% include 'snippet-currency-picker' %} {% endif %}
+        <div class="header-actions">
 
-        <p id="cart-count" class="large--right">
-          <a class="cart-link no-underline" href="/cart">{{ cart.item_count}} {{ cart.item_count | pluralize: 'item', 'items' }}<span id="cart-total-small">({{ cart.total_price | money }})</span></a> ·
-          <a href="/cart">Check out</a>
-        </p>
 
-        <a href="/cart" id="cart-total">
-          {% if shop.money_format == '${{amount}}' %}
-            <span id="cart-price">{{ cart.total_price | money | replace: '.00', '' }}</span>
-          {% else %}
-            <span id="cart-price">{{ cart.total_price | money  }}</span>
-          {% endif %}
-        </a>
+          {% comment %} {% if shop.customer_accounts_enabled %}
+          <p class="large--left medium-down--hide">
+            {% if customer %} Logged in as <a href="/account">{{ customer.first_name }}</a> · {{ "Logout" | customer_logout_link }} {% else %} {{ 'Log in' | customer_login_link }}{% if shop.customer_accounts_optional %} or {{ 'Create an account' | customer_register_link
+            }}{% endif %} {% endif %}
+          </p> <span class="cart-count">1</span>
+          {% endif %} {% if settings.show_multiple_currencies %} {% include 'snippet-currency-picker' %} {% endif %} {% endcomment %}
+
+
+            <a class="cart-link" href="/cart">{{ cart.item_count}}<span class="cart-count">&#57346;</span></a>
+          </p>
+          <span class="drawer-toggle"></span>
+        </div>
 
       </div>
 
@@ -112,10 +108,39 @@
 
     </header>
 
+
+    <div class="header-drawer">
+      <h1><a href="/">Prosperity</a></h1>
+      <span class="drawer-toggle icon"></span>
+      <nav class="navigation">
+        <ul>
+          <li class="first  ">
+            <a href="/">Home</a>
+          </li>
+          <li class="  ">
+            <a href="/collections/all">Catalog</a>
+          </li>
+          <li class="  ">
+            <a href="/blogs/news">Blog</a>
+          </li>
+          <li class="  ">
+            <a href="/pages/about-us">About Us</a>
+          </li>
+          <li class="  ">
+            <a href="/pages/contact-us">Contact Us</a>
+          </li>
+          <li class=" last ">
+            <a href="/pages/theme-features">Theme Features</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
     <main class="main-content" role="main">
       {% if template == 'list-collections' %} {% if settings.ll_collections != '' and linklists[settings.ll_collections].links.size > 0 %} {% include 'snippet-collection-listing' with settings.ll_collections %} {% else %} {% include 'snippet-collection-listing'
       %} {% endif %} {% else %} {{ content_for_layout }} {% endif %}
     </main>
+
     <div class="grid-item {% if logo_center %} col-12{% else %}col-7 medium-down--col-12{% endif %}">
       <nav id="navWrap" role="navigation">
         <ul id="nav">
