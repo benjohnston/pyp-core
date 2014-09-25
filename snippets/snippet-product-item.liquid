@@ -1,0 +1,52 @@
+{% if settings.products_per_row == "3" or settings.products_per_row == 3 %}
+  {% assign grid_item_width = 'large--col-4 medium-down--col-6' %}
+{% endif %}
+
+{% unless grid_item_width %}
+  {% assign grid_item_width = 'large--col-3 medium-down--col-6' %}
+{% endunless %}
+
+<div class="grid-item {{ grid_item_width }}{% unless product.available %} sold-out{% endunless %}">
+
+  <div class="coll-image-wrap">
+    <a href="{{ product.url | within: collection }}">
+    {% if product.available == false %}
+      {% if settings.show_sold_out_rondel %}
+      <span class="sold-out-overlay" href="{{ product.url | within: collection }}">
+        <span><em>{{ settings.sold_out_rondel_text }}</em></span>
+      </span>
+      {% endif %}
+    {% elsif product.compare_at_price > product.price and settings.show_sale_rondel %}
+      <span class="sale-overlay" href="{{ product.url | within: collection }}">
+        <span><em>{{ settings.sale_rondel_text }}</em></span>
+      </span>
+    {% endif %}
+      <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+    </a>
+  </div><!-- .coll-image-wrap -->
+
+  <div class="coll-prod-caption">
+    {% if settings.show_buy_medallion %}
+    <a class="coll-prod-buy styled-small-button{% unless product.available %} disabled{% endunless %}" href="{{ product.url | within: collection }}">
+      {% if product.available or settings.sold_out_rondel_text.size == 0 %}{{ settings.buy_medallion_text }}{% else %}{{ settings.sold_out_rondel_text }}{% endif %}
+    </a>
+    {% endif %}
+    <div class="coll-prod-meta {% unless settings.show_buy_medallion %}no-medallion{% endunless %}">
+      <h5><a href="{{ product.url | within: collection }}">{{ product.title }}</a></h5>
+      {% if product.compare_at_price > product.price %}
+      <p class="coll-prod-price on-sale accent-text">
+        {{ product.price | money }}
+        <em class="compare-at-price">{{ product.compare_at_price | money }}</em>
+      </p>
+      {% else %}
+      <p class="coll-prod-price accent-text">
+        {% if product.price_varies %}From{% endif %}
+        {{ product.price | money }}
+      </p>
+      {% endif %}
+    </div><!-- .coll-prod-meta -->
+
+  </div><!-- .coll-prod-caption -->
+
+</div>
+

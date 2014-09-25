@@ -1,0 +1,302 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-touch no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="no-touch no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="no-touch no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9]> <html class="ie9 no-touch no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="no-touch no-js">
+<!--<![endif]-->
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+  <link rel="shortcut icon" type="image/png" href="{{ 'favicon.png' | asset_url }}">
+
+  <title>
+    {% if template == 'index' %}{% if page_title contains 'Welcome' %}{{ shop.name }} &ndash; Welcome{% else %}{{ page_title }}{% endif %}{% elsif template == '404' %}{{ settings.404_title }}{% elsif page_title contains shop.name %}{{ page_title }}{% else
+    %}{{ page_title }} &ndash; {{ shop.name }}{% endif %}
+  </title>
+
+  {% if page_description %}
+  <meta name="description" content="{{ page_description }}">{% endif %}
+
+  <link rel="canonical" href="{{ canonical_url }}">
+  <meta name="viewport" content="width=device-width,initial-scale=1">{% include 'snippet-open-graph-tags' %} {% include 'twitter-cards' %} {{ 'style.scss.css' | asset_url | stylesheet_tag }} {{ 'theme.css' | asset_url | stylesheet_tag }} {{ content_for_header }} {% include
+  'oldIE-js' %}
+
+
+  <script src="//use.typekit.net/bhn8kxd.js"></script>
+  <script>
+    try {
+      Typekit.load();
+    } catch (e) {}
+  </script>
+
+  {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }} {{ 'modernizr.min.js' | asset_url | script_tag }} {% if template contains 'customers' %} {{ 'customer.css' | asset_url | stylesheet_tag }} {{ 'shopify_common.js' | shopify_asset_url
+  | script_tag }} {{ 'customer_area.js' | shopify_asset_url | script_tag }} {% endif %}
+
+</head>
+
+<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | split: '.' | first | remove: '/' | remove: '_' }}">
+
+  <div class="wrapper">
+
+    <header class="site-header">
+
+      <div class="header-tools">
+
+        {% if shop.customer_accounts_enabled %}
+        <p class="large--left medium-down--hide">
+          {% if customer %} Logged in as <a href="/account">{{ customer.first_name }}</a> · {{ "Logout" | customer_logout_link }} {% else %} {{ 'Log in' | customer_login_link }}{% if shop.customer_accounts_optional %} or {{ 'Create an account' | customer_register_link
+          }}{% endif %} {% endif %}
+        </p>
+        {% endif %} {% if settings.show_multiple_currencies %} {% include 'snippet-currency-picker' %} {% endif %}
+
+        <p id="cart-count" class="large--right">
+          <a class="cart-link no-underline" href="/cart">{{ cart.item_count}} {{ cart.item_count | pluralize: 'item', 'items' }}<span id="cart-total-small">({{ cart.total_price | money }})</span></a> ·
+          <a href="/cart">Check out</a>
+        </p>
+
+        <a href="/cart" id="cart-total">
+          {% if shop.money_format == '${{amount}}' %}
+            <span id="cart-price">{{ cart.total_price | money | replace: '.00', '' }}</span>
+          {% else %}
+            <span id="cart-price">{{ cart.total_price | money  }}</span>
+          {% endif %}
+        </a>
+
+      </div>
+
+      {% if settings.logo_alignment == 'center' %} {% assign logo_center = true %} {% endif %}
+      <div class="grid-full nav-bar{% unless logo_center %} nav-bar--left{% endunless %}">
+        {% comment %}
+        <div class="grid-item {% if logo_center %} col-12{% else %}col-5 medium-down--col-12{% endif %}">
+          {% if settings.use_logo %}
+          <a id="logo" href="/" role="banner">
+              {{ 'logo.png' | asset_url | img_tag: shop.name }}
+            </a>
+          {% else %}
+          <h1 id="title"><a href="/">{{ shop.name }}</a></h1>
+          {% endif %} {% if settings.use_logo and template == 'index' %}
+          <h1 class="hidden">{{ shop.name }}</h1>
+          {% endif %}
+        </div>
+        {% endcomment %}
+        <div class="grid-item {% if logo_center %} col-12{% else %}col-7 medium-down--col-12{% endif %}">
+          <nav id="navWrap" role="navigation">
+            <ul id="nav">
+              {% for link in linklists.main-menu.links %} {% assign has_drop_down = false %} {% assign child_list_handle = link.title | handle %} {% comment %}If the link uses the arabic, hebrew or cyrillic alphabet, or is in Chinese or Japanese, the handle will be
+              empty.{% endcomment %} {% if child_list_handle == '' %} {% for i in (0..8) %} {% unless has_drop_down %} {% if forloop.first %} {% assign temp = 'link-list' %} {% else %} {% capture temp %}link-list-{{ i }}{% endcapture %} {% endif %} {%
+              if linklists[temp] and linklists[temp].links.size > 0 and linklists[temp].title == link.title %} {% assign has_drop_down = true %} {% assign child_list_handle = temp %} {% endif %} {% endunless %} {% endfor %} {% else %} {% if linklists[child_list_handle]
+              and linklists[child_list_handle].links.size > 0 %} {% assign has_drop_down = true %} {% endif %} {% endif %}
+              <li class="nav-item{% if forloop.first %} first{% endif %}{% if link.active %} active{% endif %}{% if has_drop_down %} has-dropdown{% endif %}">
+                <a class="nav-item-link" href="{{ link.url }}">{{ link.title }}{% if has_drop_down %} <span class="icon icon-arrow-down" aria-hidden="true"></span>{% endif %}</a>
+                {% if has_drop_down %}
+                <ul class="sub-nav">
+                  {% for l in linklists[child_list_handle].links %}
+                  <li class="sub-nav-item{% if forloop.first %} first{% elsif forloop.last %} last{% endif %}">
+                    <a class="sub-nav-item-link {% if forloop.first %}first{% endif %} {% if forloop.last %}last{% endif %}" href="{{ l.url }}">{{ l.title }}</a>
+                  </li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+              </li>
+              {% endfor %}
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+    </header>
+
+    <main class="main-content" role="main">
+      {% if template == 'list-collections' %} {% if settings.ll_collections != '' and linklists[settings.ll_collections].links.size > 0 %} {% include 'snippet-collection-listing' with settings.ll_collections %} {% else %} {% include 'snippet-collection-listing'
+      %} {% endif %} {% else %} {{ content_for_layout }} {% endif %}
+    </main>
+    <!-- #content -->
+    <div class="mailing-list-signup ">
+
+        <h3 class="section-title">Turn Your Vision into Reality</h3>
+
+
+
+      <p>Sign up for FREE resources and insight on making <span>smart money moves.</span> </p>
+
+
+      <form action="{{ settings.mailchimp_form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+        <input class="mailing-list-email" type="email" placeholder="your@email.com" name="EMAIL" id="email-input">
+        <div class="mailing-list-submit">
+          <input type="submit" class="btn styled-submit" value="Sign Up" name="subscribe" id="email-submit">
+        </div>
+      </form>
+    </div>
+    {% unless settings.show_about_module == false and settings.show_contact_module == false and settings.show_mailing_list_module == false %}
+
+      <div class="footer-wrapper">
+
+
+
+
+
+
+
+    <footer class="main-footer showing-3-lists ">
+
+
+      <div class="footer-link-list footer">
+
+        <h4>Navigation</h4>
+
+
+        <ul>
+
+          <li><a href="index.html">Home</a>
+          </li>
+
+          <li><a href="search.html">Search</a>
+          </li>
+
+          <li><a href="pages/about-us.html">About Us</a>
+          </li>
+
+          <li><a href="collections/all.html">Products</a>
+          </li>
+
+          <li><a href="blogs/news.html">Blog</a>
+          </li>
+
+          <li><a href="pages/theme-features.html">Theme Features</a>
+          </li>
+
+          <li><a href="pages/contact-us.html">Contact Us</a>
+          </li>
+
+        </ul>
+      </div>
+
+
+
+      <div class="footer-link-list store-help">
+
+        <h4>Store Help</h4>
+
+
+        <ul>
+
+          <li><a href="pages/faq.html">FAQ</a>
+          </li>
+
+          <li><a href="pages/shipping.html">Shipping</a>
+          </li>
+
+          <li><a href="pages/returns.html">Returns</a>
+          </li>
+
+          <li><a href="pages/privacy-policy.html">Privacy Policy</a>
+          </li>
+
+        </ul>
+      </div>
+
+
+
+      <div class="footer-link-list social-icons">
+
+        <h4>Follow Us</h4>
+
+
+        <ul>
+
+          <li><a href="http://twitter.com/#">Twitter</a>
+          </li>
+
+          <li><a href="http://www.facebook.com/">Facebook</a>
+          </li>
+
+          <li><a href="http://www.pinterest.com/">Pinterest</a>
+          </li>
+
+          <li><a href="http://www.plus.google.com/">Google +</a>
+          </li>
+
+        </ul>
+      </div>
+
+
+
+      <div class="spread-the-word">
+
+        <h4>Help spread the word!</h4>
+
+
+
+        
+
+
+
+
+
+        <a class="footer-share-icon footer-tweet" href="http://twitter.com/share?url=http://prosperity-book.com" target="_blank">Tweet</a>
+
+
+        <a class="footer-share-icon footer-like" href="http://www.facebook.com/sharer.php?u=http://prosperity-book.com" target="_blank">Share</a>
+
+
+        <a class="footer-share-icon footer-pin" href="http://pinterest.com/pin/create/button/?url=http://prosperity-book.com" target="_blank">Pin</a>
+
+
+        <a class="footer-share-icon footer-plus" href="http://plus.google.com/share?url=http://prosperity-book.com" target="_blank">+1</a>
+
+
+
+      </div>
+
+
+      <div role="contentinfo" class="copyright footer-module">
+        <p>&copy; 2014. All rights reserved.
+          <br>
+          <a href="http://www.pixelunion.net/themes/shopify/startup-home">Picture Your Prosperity</a> by <a href="http://www.pixelunion.net">Ellen Rogin and Lisa Kueng</a>.
+      </div>
+
+
+      <div class="payment-options footer-module">
+
+        <span class="maestro">&#58130;</span>
+        <span class="interac">&#58119;</span>
+        <span class="visa">&#58113;</span>
+        <span class="mastercard">&#58114;</span>
+        <span class="discover">&#58117;</span>
+
+        <span class="american-express">&#58115;</span>
+        <span class="google-wallet">&#58121;</span>
+        <span class="paypal">&#58116;</span>
+
+        <span class="cirrus">&#58120;</span>
+        <span class="stripe">&#58118;</span>
+
+      </div>
+
+
+    </footer>
+
+    <!-- #footer -->
+    {% endunless %}
+
+
+
+  {% comment %} Plugins {% endcomment %} {% if settings.slider_home_enable %} {{ 'jquery.flexslider.min.js' | asset_url | script_tag }} {% endif %} {% if settings.show_multiple_currencies and shop.money_format contains 'money' %} {{ '//cdn.shopify.com/s/javascripts/currencies.js'
+  | script_tag }} {{ 'jquery.currencies.min.js' | asset_url | script_tag }} {% include 'snippet-currencies' %} {% endif %} {% if settings.social_sharing_blog or settings.social_sharing_products %} {{ 'social-buttons.js' | asset_url | script_tag }} {%
+  endif %} {% comment %} Core shop scripts {% endcomment %} {{ 'plugins.js' | asset_url | script_tag }} {{ 'shop.js' | asset_url | script_tag }} {{ 'jquery.fittext.js' | asset_url | script_tag }}
+  <script type="text/javascript">
+    $(".headline").fitText(1.2, {
+      minFontSize: '20px',
+      maxFontSize: '70px'
+    });
+  </script>
+  {{ 'site.js' | asset_url | script_tag }}
+
+
+  <input type="hidden" name="_pc_params" value="{{ shop.permanent_domain }}:{{ customer.id }}" />
+</body>
+
+</html>
