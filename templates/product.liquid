@@ -1,7 +1,6 @@
 <script>
   window.productJSON = {{ product | json }};
 </script>
-<h2>Order now to receive a free set of valuable bonus material.</h2>
 <div class="clearfix" id="product-content" itemscope itemtype="http://schema.org/Product">
 
 
@@ -48,9 +47,9 @@
           {% else %}
             {% assign vendor_url = product.vendor | url_for_vendor %}
           {% endif %}
-
+          <h3 itemprop="brand">{{ product.vendor }}</h3>
         {% endif %}
-        <h3 itemprop="brand">Pre-order</h3>
+
 
 
         {% if settings.prod_desc_placement == 'above' %}
