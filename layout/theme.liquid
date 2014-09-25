@@ -42,7 +42,13 @@
   <div class="wrapper">
 
     <header class="site-header">
+      <div class="branding">
 
+
+      <div class="mast">
+            <h1 itemprop="name" class="headline">Picture <span id="your">Your</span><br class="rwd-break"> Prosperity</h1>
+        </div>
+      </div>
       <div class="header-tools">
 
         {% if shop.customer_accounts_enabled %}
@@ -82,29 +88,7 @@
           {% endif %}
         </div>
         {% endcomment %}
-        <div class="grid-item {% if logo_center %} col-12{% else %}col-7 medium-down--col-12{% endif %}">
-          <nav id="navWrap" role="navigation">
-            <ul id="nav">
-              {% for link in linklists.main-menu.links %} {% assign has_drop_down = false %} {% assign child_list_handle = link.title | handle %} {% comment %}If the link uses the arabic, hebrew or cyrillic alphabet, or is in Chinese or Japanese, the handle will be
-              empty.{% endcomment %} {% if child_list_handle == '' %} {% for i in (0..8) %} {% unless has_drop_down %} {% if forloop.first %} {% assign temp = 'link-list' %} {% else %} {% capture temp %}link-list-{{ i }}{% endcapture %} {% endif %} {%
-              if linklists[temp] and linklists[temp].links.size > 0 and linklists[temp].title == link.title %} {% assign has_drop_down = true %} {% assign child_list_handle = temp %} {% endif %} {% endunless %} {% endfor %} {% else %} {% if linklists[child_list_handle]
-              and linklists[child_list_handle].links.size > 0 %} {% assign has_drop_down = true %} {% endif %} {% endif %}
-              <li class="nav-item{% if forloop.first %} first{% endif %}{% if link.active %} active{% endif %}{% if has_drop_down %} has-dropdown{% endif %}">
-                <a class="nav-item-link" href="{{ link.url }}">{{ link.title }}{% if has_drop_down %} <span class="icon icon-arrow-down" aria-hidden="true"></span>{% endif %}</a>
-                {% if has_drop_down %}
-                <ul class="sub-nav">
-                  {% for l in linklists[child_list_handle].links %}
-                  <li class="sub-nav-item{% if forloop.first %} first{% elsif forloop.last %} last{% endif %}">
-                    <a class="sub-nav-item-link {% if forloop.first %}first{% endif %} {% if forloop.last %}last{% endif %}" href="{{ l.url }}">{{ l.title }}</a>
-                  </li>
-                  {% endfor %}
-                </ul>
-                {% endif %}
-              </li>
-              {% endfor %}
-            </ul>
-          </nav>
-        </div>
+
       </div>
 
     </header>
@@ -113,6 +97,29 @@
       {% if template == 'list-collections' %} {% if settings.ll_collections != '' and linklists[settings.ll_collections].links.size > 0 %} {% include 'snippet-collection-listing' with settings.ll_collections %} {% else %} {% include 'snippet-collection-listing'
       %} {% endif %} {% else %} {{ content_for_layout }} {% endif %}
     </main>
+    <div class="grid-item {% if logo_center %} col-12{% else %}col-7 medium-down--col-12{% endif %}">
+      <nav id="navWrap" role="navigation">
+        <ul id="nav">
+          {% for link in linklists.main-menu.links %} {% assign has_drop_down = false %} {% assign child_list_handle = link.title | handle %} {% comment %}If the link uses the arabic, hebrew or cyrillic alphabet, or is in Chinese or Japanese, the handle will be
+          empty.{% endcomment %} {% if child_list_handle == '' %} {% for i in (0..8) %} {% unless has_drop_down %} {% if forloop.first %} {% assign temp = 'link-list' %} {% else %} {% capture temp %}link-list-{{ i }}{% endcapture %} {% endif %} {%
+          if linklists[temp] and linklists[temp].links.size > 0 and linklists[temp].title == link.title %} {% assign has_drop_down = true %} {% assign child_list_handle = temp %} {% endif %} {% endunless %} {% endfor %} {% else %} {% if linklists[child_list_handle]
+          and linklists[child_list_handle].links.size > 0 %} {% assign has_drop_down = true %} {% endif %} {% endif %}
+          <li class="nav-item{% if forloop.first %} first{% endif %}{% if link.active %} active{% endif %}{% if has_drop_down %} has-dropdown{% endif %}">
+            <a class="nav-item-link" href="{{ link.url }}">{{ link.title }}{% if has_drop_down %} <span class="icon icon-arrow-down" aria-hidden="true"></span>{% endif %}</a>
+            {% if has_drop_down %}
+            <ul class="sub-nav">
+              {% for l in linklists[child_list_handle].links %}
+              <li class="sub-nav-item{% if forloop.first %} first{% elsif forloop.last %} last{% endif %}">
+                <a class="sub-nav-item-link {% if forloop.first %}first{% endif %} {% if forloop.last %}last{% endif %}" href="{{ l.url }}">{{ l.title }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
     <!-- #content -->
     <div class="mailing-list-signup ">
 
@@ -230,7 +237,7 @@
 
 
 
-        
+
 
 
 
@@ -255,7 +262,7 @@
       <div role="contentinfo" class="copyright footer-module">
         <p>&copy; 2014. All rights reserved.
           <br>
-          <a href="http://www.pixelunion.net/themes/shopify/startup-home">Picture Your Prosperity</a> by <a href="http://www.pixelunion.net">Ellen Rogin and Lisa Kueng</a>.
+          <a href="/">Picture <span>Your</span> Prosperity</a> by <a href="http://www.prosperity-book.com">Ellen Rogin and Lisa Kueng</a>.
       </div>
 
 
@@ -291,6 +298,14 @@
     $(".headline").fitText(1.2, {
       minFontSize: '20px',
       maxFontSize: '70px'
+    });
+    $("h2.headline").fitText(1.2, {
+      minFontSize: '20px',
+      maxFontSize: '40px'
+    });
+    $("#your").fitText(1.2, {
+      minFontSize: '20px',
+      maxFontSize: '40px'
     });
   </script>
   {{ 'site.js' | asset_url | script_tag }}
