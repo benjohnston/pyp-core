@@ -1835,11 +1835,16 @@ html[data-useragent*='MSIE 10.0'] .cart-link .cart-count {
   opacity: 0.9;
   color: #ffffff;
 }
+.mailing-list-footer-wrapper {
+  max-width: 40%;
+  display: inline-block;
+}
+
 .mailing-list-signup {
   max-width: 1020px;
-  padding: 60px 30px 0;
-  margin: 90px auto 0;
-  border-top: 1px solid #e8eced;
+  /*padding: 60px 30px 0;*/
+  /*margin: 90px auto 0;*/
+  /*border-top: 1px solid #e8eced;*/
   text-align: center;
   -webkit-transition: -webkit-transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -moz-transition: -moz-transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -1945,6 +1950,14 @@ html,
 @media (max-width: 1020px) {
   .footer-wrapper {
     text-align: center;
+  }
+  .mailing-list-footer-wrapper {
+    max-width: 100%;
+    display: inline-block;
+    margin: 1em auto;
+  }
+  .mailing-list-signup p {
+     margin-top: 0; 
   }
 }
 @media (max-width: 720px) {
