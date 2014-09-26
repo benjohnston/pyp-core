@@ -1,6 +1,3 @@
-
-  {{ page.content }}
-<!-- #page-content -->
 {% if product.available %}
   <form action="/cart/add" method="post" enctype="multipart/form-data">
 {% endif %}
@@ -273,5 +270,3 @@ Shopify.Image.preload({{ product.images | json }}, 'grande');
 Shopify.Image.preload({{ product.images | json }}, '1024x1024');
 
 </script>
-
-<!-- #page-container -->
