@@ -4,6 +4,10 @@ header[role='banner'] {
     border-bottom: 1px solid #aaaaaa;
 }
 
+#about header {
+    border-bottom: 0;
+}
+
 header[role='banner'] ul {
     list-style: none;
     margin: 1.5em 0;
@@ -17,6 +21,17 @@ header[role='banner'] ul li {
 
 header[role='banner'] a.logo {
     border: 0;
+}
+
+@media (min-width: 970px) {
+    header[role='banner'] h1 {
+        margin-top: 26px;
+    }
+}
+@media (max-width: 970px) {
+    header[role='banner'] h1 {
+        margin-top: 0;
+    }
 }
 
 @media only screen and (min-width: 600px) {
@@ -45,7 +60,7 @@ header[role='banner'] a.logo {
     header[role='banner'] h1 {
         float: left;
         margin: 0;
-        width: 50%;
+        width: 75%;
         padding-left: 0.77777778em;
         font-size: 1em;
         text-transform: none;
@@ -105,6 +120,15 @@ color: #51595D;
     nav h1 {
         display: none;
     }
+    .product-description {
+        display: none;
+    }
+}
+
+@media (max-width: 540px) {
+    .share-buttons {
+        text-align: center;
+    }
 }
 
 @media (max-width: 480px) {
@@ -121,9 +145,7 @@ color: #51595D;
     ul.full-nav{
         text-align: center;
     }
-    header[role='banner'] ul li {
-        margin-top: 1em;
-    }
+
     #product-content {
         margin: 0 auto;
     }
@@ -131,13 +153,23 @@ color: #51595D;
 
 #preorder-masthead{
     text-align: center;
+    margin: 0 auto;
+    max-width: 800px;
 }
 h2.headline {
     text-transform: none;
+}
+@media (min-width: 970px) {
+    header[role='banner'] h1 {
+        margin-top: 26px;
+    }
 }
 
 @media (min-width: 620px) {
     .product-hidden {
         display: none;
+    }
+    .product-description {
+        display: block;
     }
 }

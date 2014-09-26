@@ -321,19 +321,22 @@ body.drawer-visible {
   }
 }
 .main-content {
-  max-width: 1020px;
-  padding: 2rem;
+  max-width: 100%;
+  /*padding: 2rem;*/
   margin: 0 auto;
   -webkit-transition: -webkit-transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -moz-transition: -moz-transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: -o-transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-@media (max-width: 720px) {
+.template-product main.main-content {
+padding: 2rem;
+}
+/*@media (max-width: 720px) {
   .main-content {
     padding: 2rem 0;
   }
-}
+}*/
 .showing-drawer .main-content {
   -webkit-transform: translateX(-260px);
   -moz-transform: translateX(-260px);
@@ -2419,13 +2422,19 @@ footer h4 {
 .share-buttons a {
   display: inline-block;
   line-height: 35px;
-  padding: 0 13px;
+  padding: 0 3%;
   border-radius: 5px;
   border: 1px solid #e8eced;
   color: #51595d;
   margin: 10px;
   font-size: 12px;
 }
+@media (max-width: 720px) {
+  .share-buttons {
+    text-align: center;
+  }
+}
+
 .template-blog .share-buttons a,
 .template-article .share-buttons a {
   margin-right: 0;
@@ -2911,6 +2920,10 @@ footer .template-index h4 {
     background-size: px px;
   }
 }
+#contrast-bg-1{
+  background-image: url(https://cdn.shopify.com/s/files/1/0643/2613/files/water-bg.jpg?4326);
+}
+
 .home-module {
   max-width: 1020px;
   margin: 0 auto;
@@ -3080,6 +3093,11 @@ footer .contrast .home-module h4 {
   width: 50%;
   vertical-align: middle;
 }
+
+.home-hero-image img {
+max-width: 90%;
+}
+
 @media (max-width: 720px) {
   .home-hero-text, .home-hero-image {
     width: 100%;
@@ -3107,33 +3125,31 @@ footer .contrast .home-module h4 {
 }
 @media (max-width: 1020px) {
   .home-hero-text h2, .home-hero-text h3 {
-    font-size: 42px;
-  }
-}
-@media (max-width: 1020px) {
-  .home-hero-text h2, .home-hero-text h3 {
-    font-size: 32px;
+    font-size: 2rem;
   }
 }
 .home-hero-text h2 {
   font-weight: bold;
 }
 .home-hero-text h3 {
-  font-weight: normal;
+  font-weight: bold;
 }
 .home-hero-text p {
-  font-size: 32px;
+  font-size: 2.6rem;
+  line-height: 1.2;
 }
 @media (max-width: 1020px) {
   .home-hero-text p {
-    font-size: 26px;
+    font-size: 2rem;
   }
 }
-@media (max-width: 1020px) {
+
+@media (max-width: 480px) {
   .home-hero-text p {
-    font-size: 20px;
+    font-size: 1.6rem;
   }
 }
+
 .home-hero-text a {
   border: none;
   margin-top: 10px;
@@ -3183,9 +3199,14 @@ footer .contrast .home-module h4 {
 .home-full-width-feature h2 {
   font-size: 40px;
 }
+
+h2.quote {
+font-weight: bold;
+}
+
 @media (max-width: 720px) {
   .home-full-width-feature h2 {
-    font-size: 30px;
+    font-size: 1.6rem;
   }
 }
 .home-full-width-feature .rte {
