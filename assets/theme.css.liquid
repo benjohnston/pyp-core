@@ -699,7 +699,7 @@ label {
   vertical-align: middle;
 }
 .input-wrapper {
-  margin: 30px 0;
+  margin: 20px 0 30px 0;
 }
 .inline-input-wrapper {
   margin: 10px 0;
@@ -1154,6 +1154,21 @@ a.logo img {
   -ms-transform: translateY(-50%);
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+@media (max-width: 480px;) {
+  a.logo img {
+    max-height: 300px;
+    position: relative;
+    margin: 0 auto;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-60%);
+  }
+  header[role='banner'] a.logo {
+    text-align: center;
+  }
 }
 .logo-regular {
   display: block;

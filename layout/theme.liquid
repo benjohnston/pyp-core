@@ -62,9 +62,9 @@
   <div class="wrapper">
 
     <header role="banner">
-      <a href="/" class="logo">{{ 'logo.png' | asset_url | img_tag: shop.name }}</a>
+      <a href="/" class="logo" title="Picture Your Prosperity">{{ 'logo.png' | asset_url | img_tag: shop.name }}</a>
       <nav role="navigation">
-          <ul>
+          <ul class="full-nav">
 
             {% for link in linklists.main-menu.links %} {% assign has_drop_down = false %} {% assign child_list_handle = link.title | handle %} {% comment %}If the link uses the arabic, hebrew or cyrillic alphabet, or is in Chinese or Japanese, the handle will be
             empty.{% endcomment %} {% if child_list_handle == '' %} {% for i in (0..8) %} {% unless has_drop_down %} {% if forloop.first %} {% assign temp = 'link-list' %} {% else %} {% capture temp %}link-list-{{ i }}{% endcapture %} {% endif %} {% if
@@ -84,6 +84,28 @@
             </li>
             {% endfor %}
           </ul>
+          {% comment %}
+          <ul class="mobile-nav">
+
+            {% for link in linklists.main-menu.links %} {% assign has_drop_down = false %} {% assign child_list_handle = link.title | handle %} {% if child_list_handle == '' %} {% for i in (0..8) %} {% unless has_drop_down %} {% if forloop.first %} {% assign temp = 'link-list' %} {% else %} {% capture temp %}link-list-{{ i }}{% endcapture %} {% endif %} {% if
+            linklists[temp] and linklists[temp].links.size > 0 and linklists[temp].title == link.title %} {% assign has_drop_down = true %} {% assign child_list_handle = temp %} {% endif %} {% endunless %} {% endfor %} {% else %} {% if linklists[child_list_handle]
+            and linklists[child_list_handle].links.size > 0 %} {% assign has_drop_down = true %} {% endif %} {% endif %}
+            <li class="primary-nav{% if forloop.first %} first strong{% endif %}{% if link.active %} active{% endif %}{% if has_drop_down %} has-dropdown{% endif %}">
+              <a href="{{ link.url }}">{{ link.title | truncatewords: 1 }}{% if has_drop_down %} <span class="icon icon-arrow-down" aria-hidden="true"></span>{% endif %}</a>
+              {% if has_drop_down %}
+              <ul class="sub-nav">
+                {% for l in linklists[child_list_handle].links %}
+                <li class="sub-nav-item{% if forloop.first %} first{% elsif forloop.last %} last{% endif %}">
+                  <a class="sub-nav-item-link {% if forloop.first %}first{% endif %} {% if forloop.last %}last{% endif %}" href="{{ l.url }}">{{ l.title | truncate: 1 }}</a>
+                </li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+          {% endcomment %}
+
           <h1><strong>Picture Your Prosperity</strong> offers an interactive, enjoyable, motivating plan for women who want to take control of their finances and feel secure about the things that matter most to them.</h1>
 
         </nav>
@@ -267,13 +289,9 @@
         minFontSize: '30px',
         maxFontSize: '70px'
       });
-      $("h2.headline").fitText(1.2, {
+      $("h2.headline").fitText(2, {
         minFontSize: '20px',
-        maxFontSize: '40px'
-      });
-      $("#your").fitText(1.2, {
-        minFontSize: '20px',
-        maxFontSize: '40px'
+        maxFontSize: '36px'
       });
     </script>
     {{ 'site.js' | asset_url | script_tag }}

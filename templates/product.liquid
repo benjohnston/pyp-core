@@ -1,7 +1,9 @@
 <script>
   window.productJSON = {{ product | json }};
 </script>
-<h2>Order now to receive a free set of valuable bonus material.</h2>
+<div id="preorder-masthead">
+  <h2 class="headline">Pre-order now and receive a set of valuable bonus material and actionable resources for free.</h2>
+</div>
 <div class="clearfix" id="product-content" itemscope itemtype="http://schema.org/Product">
 
 
@@ -48,8 +50,8 @@
           {% else %}
             {% assign vendor_url = product.vendor | url_for_vendor %}
           {% endif %}
-          <h3 itemprop="brand">{{ product.vendor }}</h3>
         {% endif %}
+        <h1 class="product-hidden"><strong>Picture Your Prosperity</strong> offers an interactive, enjoyable, motivating plan for women who want to take control of their finances and feel secure about the things that matter most to them.</h1>
 
 
 
