@@ -401,7 +401,7 @@ body {
 /* Links */
 
 a {
-  color: #2fc496;
+  color: #17BD92;
   text-decoration: none;
   -webkit-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -moz-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -639,7 +639,7 @@ table.mobile-layout tr: nth-child(even) td {
 button,
 input[type="submit"],
 input[type="button"] {
-  background: #2fc496;
+  background: #17BD92;
   font-family: Roboto, sans-serif;
   font-weight: 700;
   color: #ffffff;
@@ -1687,7 +1687,7 @@ html[data-useragent*='MSIE 10.0'] .cart-link .cart-count {
   top: 0;
   height: 100%;
   width: 260px;
-  background: #2fc496;
+  background: #17BD92;
   padding: 0 30px 30px 30px;
   text-align: center;
   z-index: 100;
@@ -4089,7 +4089,7 @@ img + .home-in-line-text {
   font-weight: 400;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
-  color: #2fc496;
+  color: #17BD92;
   position: absolute;
   left: 0;
   top: 4px;
@@ -4497,7 +4497,7 @@ img + .home-in-line-text {
   position: absolute;
   top: 50%;
   left: 50%;
-  background: #2fc496;
+  background: #17BD92;
   color: #ffffff;
   display: inline-block;
   padding: 10px 15px;
@@ -4511,7 +4511,7 @@ img + .home-in-line-text {
   position: absolute;
   bottom: -10px;
   right: -10px;
-  background: #2fc496;
+  background: #17BD92;
   color: #ffffff;
   display: block;
   border-radius: 50%;
@@ -4674,7 +4674,7 @@ img + .home-in-line-text {
   margin-top: 0;
 }
 .cart-item-remove {
-  color: #2fc496;
+  color: #17BD92;
   font-size: 13px;
   margin-top: 10px;
   cursor: pointer;
@@ -4824,7 +4824,7 @@ tr .cart-item-total {
 }
 .cart-undo {
   cursor: pointer;
-  color: #2fc496;
+  color: #17BD92;
 }
 .cart-undo: hover {
   color: #24ab83;
@@ -5148,7 +5148,7 @@ input[type="text"].search-input {
 }
 .edit-address,
 .delete-address {
-  color: #2fc496;
+  color: #17BD92;
   cursor: pointer;
   font-size: 1rem;
 }

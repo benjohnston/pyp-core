@@ -113,20 +113,23 @@
   </header>
 
 </div>
-  <main class="main-content" role="main">
+  <main class="main-content {% if template == 'product' %}product-cta{% endif %}" role="main">
     {% if template == 'list-collections' %} {% if settings.ll_collections != '' and linklists[settings.ll_collections].links.size > 0 %} {% include 'snippet-collection-listing' with settings.ll_collections %} {% else %} {% include 'snippet-collection-listing'%} {% endif %} {% else %} {{ content_for_layout }} {% endif %}
-    {% if template == 'product' %} {% include 'descript'%} {% endif %}
+    
   </main>
-
-
+  <div class="main-content secondary">
+    {% if template == 'product' %} {% include 'descript'%} {% endif %}
+  </div>
   <!-- #content -->
 
   {% unless settings.show_about_module == false and settings.show_contact_module == false and settings.show_mailing_list_module == false %}
 
   <div class="footer-wrapper">
 
-    <footer class="main-footer showing-3-lists ">
-
+    <footer class="main-footer showing-2-lists ">
+      <div class="mailing-list-footer-wrapper">
+        {% include 'mailing-list' %}
+      </div>
 
       <div class="footer-link-list footer">
 
@@ -145,23 +148,6 @@
       </div>
 
 
-
-      <div class="footer-link-list store-help">
-
-
-        <ul>
-
-          <li><a href="pages/shipping.html">Shipping</a>
-          </li>
-
-          <li><a href="pages/privacy-policy.html">Privacy Policy</a>
-          </li>
-
-        </ul>
-      </div>
-
-
-
       <div class="footer-link-list social-icons">
 
         <ul>
@@ -177,9 +163,7 @@
 
         </ul>
       </div>
-      <div class="mailing-list-footer-wrapper">
-        {% include 'mailing-list' %}
-      </div>
+      
 
       <div role="contentinfo" class="copyright footer-module">
         <p>&copy; 2014. All rights reserved.</p>
