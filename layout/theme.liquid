@@ -114,15 +114,15 @@
 
 </div>
   <main class="main-content" role="main">
-    {% if template == 'list-collections' %} {% if settings.ll_collections != '' and linklists[settings.ll_collections].links.size > 0 %} {% include 'snippet-collection-listing' with settings.ll_collections %} {% else %} {% include 'snippet-collection-listing'
-    %} {% endif %} {% else %} {{ content_for_layout }} {% endif %}
+    {% if template == 'list-collections' %} {% if settings.ll_collections != '' and linklists[settings.ll_collections].links.size > 0 %} {% include 'snippet-collection-listing' with settings.ll_collections %} {% else %} {% include 'snippet-collection-listing'%} {% endif %} {% else %} {{ content_for_layout }} {% endif %}
+    {% if template == 'product' %} {% include 'descript'%} {% endif %}
   </main>
 
 
   <!-- #content -->
 
   {% unless settings.show_about_module == false and settings.show_contact_module == false and settings.show_mailing_list_module == false %}
-</div>
+
   <div class="footer-wrapper">
 
     <footer class="main-footer showing-3-lists ">
@@ -175,9 +175,6 @@
           <li><a href="http://www.pinterest.com/">Pinterest</a>
           </li>
 
-          <li><a href="http://www.plus.google.com/">Google +</a>
-          </li>
-
         </ul>
       </div>
       <div class="mailing-list-footer-wrapper">
@@ -185,7 +182,7 @@
       </div>
 
       <div role="contentinfo" class="copyright footer-module">
-        <p>&copy; 2014. All rights reserved.
+        <p>&copy; 2014. All rights reserved.</p>
           <br>
           <a href="/">Picture <span>Your</span> Prosperity</a> by <a href="http://www.prosperity-book.com">Ellen Rogin and Lisa Kueng</a>.
       </div>

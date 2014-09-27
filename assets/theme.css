@@ -483,7 +483,7 @@ footer h4 {
   color: #a0a2a3;
   font-family: 'proxima-nova', sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 1rem;
   -webkit-font-smoothing: initial;
   -webkit-font-smoothing: ;
   -webkit-font-smoothing: ;
@@ -525,7 +525,7 @@ table {
   color: #51595d;
   border: 1px solid #e8eced;
   border-top: none;
-  font-size: 14px;
+  font-size: 1rem;
   border-radius: 5px;
   border-collapse: separate;
   margin: 30px 0;
@@ -652,7 +652,7 @@ input[type="button"] {
   display: inline-block;
   cursor: pointer;
   border: none;
-  font-size: 14px;
+  font-size: 1rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -683,14 +683,14 @@ input[type="button"].disabled {
 /* Forms & buttons */
 
 form {
-  font-size: 14px;
+  font-size: 1rem;
 }
 label {
   font-size: 16px;
 }
 .inline-input-wrapper label {
   font-weight: normal;
-  font-size: 14px;
+  font-size: 1rem;
   margin-left: 5px;
   display: inline-block;
   vertical-align: middle;
@@ -819,7 +819,7 @@ input[type=submit] {
   position: relative;
   text-align: left;
   width: 100%;
-  font-size: 14px;
+  font-size: 1rem;
   margin: 30px 0;
 }
 .select-wrapper: after {
@@ -1381,7 +1381,7 @@ input.header-search-input: -ms-input-placeholder {
   left: -80px;
   margin-left: 50%;
   text-align: center;
-  font-size: 14px;
+  font-size: 1rem;
   border-radius: 5px;
   top: 100%;
 }
@@ -1491,7 +1491,7 @@ input.header-search-input: -ms-input-placeholder {
 }
 .header-drawer .navigation ul ul a {
   display: block;
-  font-size: 14px;
+  font-size: 1rem;
   padding: 12px 0;
 }
 .header-drawer .navigation .has-dropdown {
@@ -1661,7 +1661,7 @@ input.header-search-input: -ms-input-placeholder {
   color: #ffffff !important;
   font-weight: 700;
   text-align: center;
-  font-size: 14px;
+  font-size: 1rem;
   font-family: Helvetica, Arial, sans-serif;
 }
 .ie9 .cart-link .cart-count,
@@ -1817,7 +1817,7 @@ input[type="email"].mailing-list-email {
   width: 70%;
   display: inline-block;
   vertical-align: middle;
-  font-size: 14px;
+  font-size: 1rem;
 }
 @media (max-width: 720px) {
   input[type="email"].mailing-list-email {
@@ -1901,7 +1901,7 @@ html,
 footer {
   max-width: 1020px;
   margin: 0 auto;
-  font-size: 14px;
+  font-size: 1rem;
   padding: 60px 30px 100px;
 }
 footer.show-border {
@@ -2316,7 +2316,7 @@ footer h4 {
   max-width: 600px;
 }
 .pagination > div {
-  font-size: 14px;
+  font-size: 1rem;
   display: inline-block;
   width: 33.33%;
 }
@@ -4667,7 +4667,7 @@ img + .home-in-line-text {
 .cart-vendor,
 .cart-variant {
   color: #a0a2a3;
-  font-size: 14px;
+  font-size: 1rem;
   margin-top: 10px;
 }
 .cart-vendor ~ .cart-variant {
@@ -4764,7 +4764,7 @@ tr .cart-item-total {
   }
 }
 .cart-instructions textarea {
-  font-size: 14px;
+  font-size: 1rem;
 }
 .cart-totals {
   text-align: right;
@@ -4848,7 +4848,7 @@ tr .cart-item-total {
   width: 40%;
   display: inline-block;
   vertical-align: top;
-  font-size: 14px;
+  font-size: 1rem;
   padding: 39px 0 0 30px;
   text-align: right;
 }
@@ -4870,7 +4870,7 @@ tr .cart-item-total {
 .cart-shipping-zip-code input {
   display: inline-block;
   width: auto;
-  font-size: 14px;
+  font-size: 1rem;
 }
 @media (max-width: 720px) {
   .cart-shipping-zip-code input {
@@ -4899,7 +4899,7 @@ input[type="text"].search-input {
   display: inline-block;
   vertical-align: middle;
   width: 70%;
-  font-size: 14px;
+  font-size: 1rem;
 }
 @media (max-width: 720px) {
   input[type="text"].search-input {
@@ -5048,7 +5048,7 @@ input[type="text"].search-input {
 }
 .logged-in-as {
   margin-bottom: 60px;
-  font-size: 14px;
+  font-size: 1rem;
   text-align: center;
 }
 .account-info {
@@ -5063,7 +5063,7 @@ input[type="text"].search-input {
   display: block;
 }
 .view-addresses-link {
-  font-size: 14px;
+  font-size: 1rem;
 }
 .orders {
   width: 100%;
@@ -5150,7 +5150,7 @@ input[type="text"].search-input {
 .delete-address {
   color: #2fc496;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 1rem;
 }
 .edit-address: hover, .delete-address: hover {
   color: #24ab83;
