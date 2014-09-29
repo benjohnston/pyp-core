@@ -113,18 +113,24 @@
   </header>
 
 </div>
-  <main class="main-content {% if template == 'product' %}product-cta{% endif %}" role="main">
+  <main class="main-content {% if template == 'product' %}product-cta{% endif %}{% if template == 'blog' %}blog{% endif %}" role="main">
     {% if template == 'list-collections' %} {% if settings.ll_collections != '' and linklists[settings.ll_collections].links.size > 0 %} {% include 'snippet-collection-listing' with settings.ll_collections %} {% else %} {% include 'snippet-collection-listing'%} {% endif %} {% else %} {{ content_for_layout }} {% endif %}
     
   </main>
+  {% if template == 'product' %}
   <div class="main-content secondary">
-    {% if template == 'product' %} {% include 'descript'%} {% endif %}
+    {% include 'descript'%} 
   </div>
+  {% endif %}
   <!-- #content -->
 
   {% unless settings.show_about_module == false and settings.show_contact_module == false and settings.show_mailing_list_module == false %}
 
   <div class="footer-wrapper">
+    <div id="blend-first" class="footer-merge">
+    </div>
+    <div id="blend-second" class="footer-merge">
+    </div>
 
     <footer class="main-footer showing-2-lists ">
       <div class="mailing-list-footer-wrapper">
@@ -138,10 +144,12 @@
           <li><a href="/">Home</a>
           </li>
 
-          <li><a href="pages/about">About Us</a>
+          <li><a href="/pages/about">About Lisa & Ellen</a>
+          </li>
+          <li><a href="/pages/resources">Resources</a>
           </li>
 
-          <li><a href="blogs/news">Blog</a>
+          <li><a href="/blogs/news">Blog</a>
           </li>
 
         </ul>
@@ -168,7 +176,7 @@
       <div role="contentinfo" class="copyright footer-module">
         <p>&copy; 2014. All rights reserved.</p>
           <br>
-          <a href="/">Picture <span>Your</span> Prosperity</a> by <a href="http://www.prosperity-book.com">Ellen Rogin and Lisa Kueng</a>.
+          <a style="color:#17BD92" href="/">Picture <span>Your</span> Prosperity</a> by <a style="color:#17BD92" href="http://www.prosperity-book.com">Ellen Rogin<span style="color:#fff"> and</span> Lisa Kueng</a>.
       </div>
 
 
@@ -184,7 +192,7 @@
         maxFontSize: '70px'
       });
       $("h2.headline").fitText(2, {
-        minFontSize: '16px',
+        minFontSize: '20px',
         maxFontSize: '36px'
       });
     </script>

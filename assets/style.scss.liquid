@@ -142,7 +142,7 @@ $headerFontWeight: {{ header_weight }};
 $navigationFontStack: {{ navigation_family }};
 
 // Accent font
-$accentFontStack: {{ accent_family }};
+$accentFontStack: "Proxima-nova", sans-serif, helvetica;
 
 
 .mast {
@@ -210,7 +210,7 @@ input:focus::-webkit-input-placeholder, textarea:focus::-webkit-input-placeholde
 button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
 textarea { overflow: auto; vertical-align: top; }
 input:valid, textarea:valid {  }
-input:invalid, textarea:invalid { background-color: transparent; }
+input:invalid, textarea:invalid { background-color: #fff; }
 table { border-collapse: collapse; border-spacing: 0; }
 input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0;}
 ::-webkit-validation-bubble-message { -webkit-box-shadow: 0 0 0 0; }
@@ -543,7 +543,7 @@ a {
   height: auto;
   overflow: visible;
   {% if settings.page_bg_transparent %}
-    background: transparent;
+    background: #ffffff;
   {% else %}
     background: {{ settings.page_bg_color }};
   {% endif %}
@@ -561,6 +561,10 @@ a {
     overflow: hidden;
   }
 }
+
+// .template-product .wrapper {
+//   background-color: #fff;
+// }
 
 {% if settings.use_bg_image and settings.page_bg_transparent == false  %}
 #sub-footer { border-top: none !important }
@@ -1959,8 +1963,6 @@ h3.widget-title {
 
 .blog-read-more {
   display: block;
-  font-size: 13px;
-  margin: 0 0 20px 0;
 }
 
 
