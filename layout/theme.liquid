@@ -8,9 +8,25 @@
 <!--<![endif]-->
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
-  <link rel="shortcut icon" type="image/png" href="{{ 'favicon.png' | asset_url }}">
+    <meta charset="UTF-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <link rel="shortcut icon" type="image/png" href="{{ 'favicon.png' | asset_url }}">
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="{{ 'favicon.png' | asset_url }}/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ '/apple-touch-icon-57x57.png' | asset_url }}" />
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ 'favicon.png' | asset_url }}/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ '/apple-touch-icon-114x114.png' | asset_url }}" />
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ '/apple-touch-icon-144x144.png' | asset_url }}" />
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ '/apple-touch-icon-60x60.png' | asset_url }}" />
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ '/apple-touch-icon-120x120.png' | asset_url }}" />
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ '/apple-touch-icon-76x76.png' | asset_url }}" />
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ '/apple-touch-icon-152x152.png' | asset_url }}" />
+    <!-- Windows 8 Tile Icons -->
+    <meta name="msapplication-square70x70logo" content="{{ 'smalltile.png' | asset_url }}" />
+    <meta name="msapplication-square150x150logo" content="{{ 'mediumtile.png' | asset_url }}" />
+    <meta name="msapplication-wide310x150logo" content="{{ 'widetile.png' | asset_url }}" />
+    <meta name="msapplication-square310x310logo" content="{{ 'largetile.png' | asset_url }}" />
+
 
   <title>
     {% if template == 'index' %}{% if page_title contains 'Welcome' %}{{ shop.name }} &ndash; Welcome{% else %}{{ page_title }}{% endif %}{% elsif template == '404' %}{{ settings.404_title }}{% elsif page_title contains shop.name %}{{ page_title }}{% else
@@ -32,7 +48,7 @@
     } catch (e) {}
   </script>
 
-  {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }} {{ 'modernizr.min.js' | asset_url | script_tag }} {% if template contains 'customers' %} {{ 'customer.css' | asset_url | stylesheet_tag }} {{ 'shopify_common.js' | shopify_asset_url
+  {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }} {{ 'modernizr.min.js' | asset_url | script_tag }} {{ 'share.min.js' | asset_url | script_tag }} {% if template contains 'customers' %} {{ 'customer.css' | asset_url | stylesheet_tag }} {{ 'shopify_common.js' | shopify_asset_url
   | script_tag }} {{ 'customer_area.js' | shopify_asset_url | script_tag }} {% endif %}
 
   <!-- Store object -->
@@ -136,9 +152,9 @@
       <div class="mailing-list-footer-wrapper">
         {% include 'mailing-list' %}
       </div>
-
+      
       <div class="footer-link-list footer">
-
+        <h4>Navigation</h4>
         <ul>
 
           <li><a href="/">Home</a>
@@ -157,6 +173,7 @@
 
 
       <div class="footer-link-list social-icons">
+      <h4>Spread the word!</h4>
 
         <ul>
 
@@ -175,7 +192,6 @@
 
       <div role="contentinfo" class="copyright footer-module">
         <p>&copy; 2014. All rights reserved.</p>
-          <br>
           <a style="color:#17BD92" href="/">Picture <span>Your</span> Prosperity</a> by <a style="color:#17BD92" href="http://www.prosperity-book.com">Ellen Rogin<span style="color:#fff"> and</span> Lisa Kueng</a>.
       </div>
 

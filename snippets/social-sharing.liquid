@@ -26,18 +26,18 @@
   {% if settings.share_facebook %}
     <a target="_blank" href="//www.facebook.com/sharer.php?u={{ permalinkURL }}" class="share-facebook">
       <span class="share-title">Share</span>
-      {% if settings.social_sharing_count %}
+      {% comment %}{% if settings.social_sharing_count %}
         <span class="share-count">0</span>
-      {% endif %}
+      {% endif %}{% endcomment %}
     </a>
   {% endif %}
 
   {% if settings.share_twitter %}
     <a target="_blank" href="//twitter.com/share?url={{ permalinkURL }}&amp;text={{ shareTitle }}" class="share-twitter">
       <span class="share-title">Tweet</span>
-      {% if settings.social_sharing_count %}
+      {% comment %}{% if settings.social_sharing_count %}
         <span class="share-count">0</span>
-      {% endif %}
+      {% endif %}{% endcomment %}
     </a>
   {% endif %}
 
@@ -46,9 +46,9 @@
     {% if settings.share_pinterest %}
       <a target="_blank" href="//pinterest.com/pin/create/button/?url={{ permalinkURL }}&amp;media={{ product.featured_image | img_url: 'original' }}&amp;description={{ product.title | escape }}" class="share-pinterest">
         <span class="share-title">Pin it</span>
-        {% if settings.social_sharing_count %}
+        {% comment %}{% if settings.social_sharing_count %}
           <span class="share-count">0</span>
-        {% endif %}
+        {% endif %}{% endcomment %}
       </a>
     {% endif %}
 
@@ -63,11 +63,11 @@
   {% if settings.share_google %}
     <a target="_blank" href="//plus.google.com/share?url={{ permalinkURL }}" class="share-google">
       <!-- Cannot get Google+ share count with JS yet -->
-      {% if settings.social_sharing_count %}
+      {% comment %}{% if settings.social_sharing_count %}
         <span class="share-count">+1</span>
       {% else %}
         <span class="share-title">+1</span>
-      {% endif %}
+      {% endif %}{% endcomment %}
     </a>
   {% endif %}
 
