@@ -48,7 +48,7 @@
     } catch (e) {}
   </script>
 
-  {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }} {{ 'modernizr.min.js' | asset_url | script_tag }} {{ 'share.min.js' | asset_url | script_tag }} {% if template contains 'customers' %} {{ 'customer.css' | asset_url | stylesheet_tag }} {{ 'shopify_common.js' | shopify_asset_url
+  {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }} {{ 'modernizr.min.js' | asset_url | script_tag }} {{ 'share.min.js' | asset_url | script_tag }} {{ 'jquery.ajaxchimp.min.js' | asset_url | script_tag }} {% if template contains 'customers' %} {{ 'customer.css' | asset_url | stylesheet_tag }} {{ 'shopify_common.js' | shopify_asset_url
   | script_tag }} {{ 'customer_area.js' | shopify_asset_url | script_tag }} {% endif %}
 
   <!-- Store object -->

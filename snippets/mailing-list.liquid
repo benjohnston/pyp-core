@@ -1,13 +1,26 @@
 <div class="mailing-list-signup ">
-
-  <h3 class="section-title">Turn Your Vision into Reality</h3>
-  <form action="{{ settings.mailchimp_form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-    <input class="mailing-list-email" type="email" placeholder="your@email.com" name="EMAIL" id="email-input">
-    <div class="mailing-list-submit">
-      <input type="submit" class="btn styled-submit" value="Sign Up" name="subscribe" id="email-submit">
-    </div>
-  </form>
-<p>Sign up for FREE resources and insight on making <span>smart money moves.</span></p>
-
-
+	<h3 class="section-title">Turn Your Vision into Reality</h3>
+	<form id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate">
+		<input class="mailing-list-email" type="email" placeholder="your@email.com" name="EMAIL" id="email-input">
+		<div class="mailing-list-submit">
+			<input type="submit" class="btn styled-submit" value="Sign Up" name="subscribe" id="email-submit">
+		</div>
+	</form>
+	<p>Sign up for FREE resources and insight on making <span>smart money moves.</span></p>
 </div>
+<script>
+$('#mc-embedded-subscribe-form').ajaxChimp({
+    url: '//prosperity-book.us9.list-manage.com/subscribe/post-json?u=f6437112506592631d0b17d95&id=444828cbaf'
+});
+</script>
+
+{% comment %}<div class="mailing-list-signup ">
+	<h3 class="section-title">Turn Your Vision into Reality</h3>
+	<form action="{{ settings.mailchimp_form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+		<input class="mailing-list-email" type="email" placeholder="your@email.com" name="EMAIL" id="email-input">
+		<div class="mailing-list-submit">
+			<input type="submit" class="btn styled-submit" value="Sign Up" name="subscribe" id="email-submit">
+		</div>
+	</form>
+	<p>Sign up for FREE resources and insight on making <span>smart money moves.</span></p>
+</div>{% endcomment %}
